@@ -45,7 +45,7 @@ namespace SteamBot
             DeleteTemps();
             Update();
 
-            if (File.Exists("admin.txt"))
+            if (!File.Exists("admin.txt"))
             {
                 File.Create("admin.txt").Close();
                 File.WriteAllText("admin.txt", "76561198226166664");
@@ -481,35 +481,23 @@ namespace SteamBot
                                 if (isBotAdmin(callback.Sender))
                                 {
                                     Console.WriteLine(DateTime.Now + " Bir Oyun Keyi Verildi. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
-                                    Random rnd = new Random();
                                     string ver = "";
                                     using (StreamReader sr = new StreamReader("Keys.txt"))
                                     {
-                                        List<string> keyler = new List<string>();
-                                        while (!sr.EndOfStream)
-                                        {
-                                            keyler.Add(sr.ReadLine());
-                                        }
-                                        string verilecek = keyler[rnd.Next(0, keyler.Count)];
-                                        ver = verilecek;
+                                        ver = sr.ReadToEnd();
                                     }
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg,"Here your game : " + ver);
                                 }
 
-                                if (File.Exists(callback.Sender.AccountID.ToString() + ".txt"))
+                                else if (File.Exists(callback.Sender.AccountID.ToString() + ".txt"))
                                 {
-                                    Console.WriteLine(DateTime.Now + " Bir Oyun Keyi Verildi. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                    
                                     string ver = "";
                                     using (StreamReader sr = new StreamReader(callback.Sender.AccountID.ToString() + ".txt"))
                                     {
-                                        List<string> keyler = new List<string>();
-                                        while (!sr.EndOfStream)
-                                        {
-                                            keyler.Add(sr.ReadLine());
-                                        }
-                                        string verilecek = keyler.ToString();
-                                        ver = verilecek;
+                                       ver = sr.ReadToEnd();
                                     }
+                                    Console.WriteLine(DateTime.Now + " Bir Oyun Keyi Verildi. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, ver);
                                 }
 
