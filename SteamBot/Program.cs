@@ -10,10 +10,12 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading;
+using System.Timers;
 using System.Web.Script.Serialization;
 using Ionic.Zip;
 using Microsoft.Win32;
 using SteamKit2.Unified.Internal;
+using Timer = System.Timers.Timer;
 
 namespace SteamBot
 {
@@ -31,6 +33,14 @@ namespace SteamBot
 
         static void Main(string[] args)
         {
+            int saniye = 1000;
+            int dakika = 60000;
+            int saat = 3600000;
+
+            Timer tm = new Timer();
+            tm.Interval = 5 * saat;
+            tm.Start();
+            tm.Elapsed += TmOnElapsed;
 
             DeleteTemps();
             Update();
@@ -134,15 +144,15 @@ namespace SteamBot
             try
             {
                 var guncelleme = wc.DownloadString("https://raw.githubusercontent.com/Adilx05/AdilBot/master/Version");
-                if (guncelleme != "102")
+                if (guncelleme != "103")
                 {
                     using (var client = new WebClient())
                     {
-                        Console.WriteLine("Please Wait Updating");
+                        Console.WriteLine("Güncelleniyor ...");
                         client.DownloadFile(
                             "https://github.com/Adilx05/AdilBot/raw/master/AdilBot.zip",
                             "AdilBot.zip");
-                        client.DownloadFileCompleted += Client_DownloadFileCompleted;
+                        
                         string cikarilacak = "AdilBot.zip";
                         using (ZipFile zip1 = ZipFile.Read(cikarilacak))
                         {
@@ -151,9 +161,8 @@ namespace SteamBot
                                 s.Extract("Temp", ExtractExistingFileAction.OverwriteSilently);
                             }
                         }
-                        
+                        Console.WriteLine("Güncelleme Tamamlandı. Yeniden Başlatılıyor...");
                     }
-                    
 
                     Process tasi = new Process();
                     tasi.StartInfo.FileName = "cmd.exe";
@@ -163,15 +172,12 @@ namespace SteamBot
 
                     Process restartla = new Process();
                     restartla.StartInfo.FileName = "cmd.exe";
-                    restartla.StartInfo.Arguments = "/C timeout /t 8 & START SteamBot.exe ";
+                    restartla.StartInfo.Arguments = "/C timeout /t 10 & START SteamBot.exe ";
                     restartla.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     restartla.Start();
 
                     Environment.Exit(0);
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -179,11 +185,11 @@ namespace SteamBot
             }
         }
 
-        private static void Client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        private static void TmOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            //Gereksiz
-            Console.WriteLine("Info : Update completed. Restarting");
+            Update();
         }
+
 
         public static void DeleteTemps()
         {
@@ -425,6 +431,35 @@ namespace SteamBot
 
                                 break;
 
+                            case "!keyekle":
+                                if (isBotAdmin(callback.Sender))
+                                {
+                                    args = Seperate(2, ' ', callback.Message);
+
+                                    Console.WriteLine(DateTime.Now + "   İsim değiştirme komutu alındı.");
+
+                                    if (args[0] == "-1")
+                                    {
+                                        steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Yanlış giriş. !keyekle [Alıcı S64] [Keyler]");
+                                        return;
+                                    }
+
+                                    using (StreamWriter writer = new StreamWriter( args[1] + ".txt", true))
+                                    {
+                                        writer.Write(args[2] + Environment.NewLine);
+                                    }
+
+                                }
+
+                                else
+                                {
+                                    Console.WriteLine(DateTime.Now + "İsim değiştirme komutu alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Siz Yönetici Değilsiniz");
+                                }
+
+
+                                break;
+
                             case "!kapan":
                                 if (isBotAdmin(callback.Sender))
                                 {
@@ -459,6 +494,23 @@ namespace SteamBot
                                         ver = verilecek;
                                     }
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg,"Here your game : " + ver);
+                                }
+
+                                if (File.Exists(callback.Sender.AccountID.ToString() + ".txt"))
+                                {
+                                    Console.WriteLine(DateTime.Now + " Bir Oyun Keyi Verildi. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                    string ver = "";
+                                    using (StreamReader sr = new StreamReader(callback.Sender.AccountID.ToString() + ".txt"))
+                                    {
+                                        List<string> keyler = new List<string>();
+                                        while (!sr.EndOfStream)
+                                        {
+                                            keyler.Add(sr.ReadLine());
+                                        }
+                                        string verilecek = keyler.ToString();
+                                        ver = verilecek;
+                                    }
+                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, ver);
                                 }
 
                                 else
