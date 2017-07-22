@@ -1,0 +1,35 @@
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\SteamBot.exe.config
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\SteamBot.exe
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\SteamBot.pdb
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\protobuf-net.dll
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\SteamKit2.dll
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\protobuf-net.pdb
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\protobuf-net.xml
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\bin\Debug\SteamKit2.xml
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\obj\Debug\SteamBot.csprojResolveAssemblyReference.cache
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\obj\Debug\SteamBot.exe
+C:\Users\adilx\Documents\Visual Studio 2015\Projects\SteamBot\SteamBot\obj\Debug\SteamBot.pdb
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\SteamBot.exe.config
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\SteamBot.exe
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\SteamBot.pdb
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\protobuf-net.dll
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\SteamKit2.dll
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\protobuf-net.pdb
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\protobuf-net.xml
+C:\Users\abdur\Desktop\SteamBot\SteamBot\bin\Debug\SteamKit2.xml
+C:\Users\abdur\Desktop\SteamBot\SteamBot\obj\Debug\SteamBot.csprojResolveAssemblyReference.cache
+C:\Users\abdur\Desktop\SteamBot\SteamBot\obj\Debug\SteamBot.exe
+C:\Users\abdur\Desktop\SteamBot\SteamBot\obj\Debug\SteamBot.pdb
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\SteamBot.exe.config
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\SteamBot.exe
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\SteamBot.pdb
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\DotNetZip.dll
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\protobuf-net.dll
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\SteamKit2.dll
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\DotNetZip.xml
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\protobuf-net.pdb
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\protobuf-net.xml
+C:\Users\abdur\Desktop\AdilBot\SteamBot\bin\Debug\SteamKit2.xml
+C:\Users\abdur\Desktop\AdilBot\SteamBot\obj\Debug\SteamBot.csprojResolveAssemblyReference.cache
+C:\Users\abdur\Desktop\AdilBot\SteamBot\obj\Debug\SteamBot.exe
+C:\Users\abdur\Desktop\AdilBot\SteamBot\obj\Debug\SteamBot.pdb
