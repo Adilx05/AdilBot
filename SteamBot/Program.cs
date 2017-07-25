@@ -144,7 +144,7 @@ namespace SteamBot
             try
             {
                 var guncelleme = wc.DownloadString("https://raw.githubusercontent.com/Adilx05/AdilBot/master/Version");
-                if (guncelleme != "103")
+                if (guncelleme != "105")
                 {
                     using (var client = new WebClient())
                     {
@@ -436,7 +436,7 @@ namespace SteamBot
                                 {
                                     args = Seperate(2, ' ', callback.Message);
 
-                                    Console.WriteLine(DateTime.Now + "   İsim değiştirme komutu alındı.");
+                                    Console.WriteLine(DateTime.Now + "   "+ args[1] +" Dosyasına Key Eklendi.");
 
                                     if (args[0] == "-1")
                                     {
@@ -453,8 +453,8 @@ namespace SteamBot
 
                                 else
                                 {
-                                    Console.WriteLine(DateTime.Now + "İsim değiştirme komutu alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
-                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Siz Yönetici Değilsiniz");
+                                   // Console.WriteLine(DateTime.Now + "İsim değiştirme komutu alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Bu Özelliği Kullanabilmek İçin Yönetici Olmalısınız.");
                                 }
 
 
@@ -478,7 +478,7 @@ namespace SteamBot
 
                             case "!key":
 
-                                if (isBotAdmin(callback.Sender))
+                              /*  if (isBotAdmin(callback.Sender))
                                 {
                                     Console.WriteLine(DateTime.Now + " Bir Oyun Keyi Verildi. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
                                     string ver = "";
@@ -487,9 +487,9 @@ namespace SteamBot
                                         ver = sr.ReadToEnd();
                                     }
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg,"Here your game : " + ver);
-                                }
+                                }*/
 
-                                else if (File.Exists(callback.Sender.AccountID.ToString() + ".txt"))
+                                if (File.Exists(callback.Sender.AccountID.ToString() + ".txt"))
                                 {
                                     
                                     string ver = "";
@@ -503,6 +503,7 @@ namespace SteamBot
 
                                 else
                                 {
+                                    Console.WriteLine(DateTime.Now + " Geçersiz Oyun Keyi İsteği. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender) + "Steam Id : " + callback.Sender.AccountID);
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Maalesef herhangi bir oyun kazanmamışsınız :(" + Environment.NewLine + "Sorry you didn't win any game :(");
                                 }
                                
@@ -580,13 +581,14 @@ namespace SteamBot
                                 }
 
                                 break;
-                            /*   case "!senkimsin":
+
+                            /*   case "!Komut":
                                     Console.WriteLine(DateTime.Now + "Kimsin Komutu Alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
                                     steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Ben bir botum, Adil adına çalışıyorum.");
                                     break; */
 
                             default:
-                                steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Dediğinizi anlamadım komut listesi için !help . " + Environment.NewLine + "I don't understand. Use !help command if you want help.");
+                                steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Dediğinizi anlamadım komut listesi için !yardım . " + Environment.NewLine + "I don't understand. Use !help command if you want help.");
                                 Console.WriteLine(DateTime.Now + "  Bilinmeyen Bir Komut Alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
                                 break;
                         }
@@ -597,7 +599,7 @@ namespace SteamBot
 
                     else
                     {
-                        steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Dediğinizi anlamadım komut listesi için !help . " + Environment.NewLine + "I don't understand. Use !help command if you want help.");
+                        steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Dediğinizi anlamadım komut listesi için !yardım . " + Environment.NewLine + "I don't understand. Use !help command if you want help.");
                         Console.WriteLine(DateTime.Now + "  Bilinmeyen Bir Komut Alındı. Kullanıcı Adı: " + steamFriends.GetFriendPersonaName(callback.Sender));
                     }
                 }
